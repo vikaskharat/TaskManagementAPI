@@ -1,0 +1,68 @@
+// Login API
+POST http://localhost:8000/api/login
+{
+    "email": "user@example.com",
+    "password": "password"
+}
+
+// Create a new task
+POST http://localhost:8000/api/tasks
+{
+    "title": "Task 1",
+    "description": "Task description",
+    "due_date": "2024-03-01",
+    "status": "pending"
+}
+
+// Update an existing task
+PUT http://localhost:8000/api/tasks/{taskId}
+{
+    "title": "Updated Task 1",
+    "description": "Updated task description",
+    "due_date": "2024-03-01",
+    "status": "in_progress"
+}
+
+// Delete an existing task
+DELETE http://localhost:8000/api/tasks/{taskId}
+
+// View a specific task
+GET http://localhost:8000/api/tasks/{taskId}
+
+// Assign users to a task
+POST http://localhost:8000/api/tasks/{taskId}/assign
+{
+    "user_ids": [1, 2, 3] // Array 
+}
+
+// Unassign a user from a task
+DELETE http://localhost:8000/api/tasks/{taskId}/unassign/{userId}
+
+// Update task status as a logged-in user
+PUT http://localhost:8000/api/utask_update/{taskID}/status
+{
+    "status": "completed",
+    "email": "user@domain.com",
+    "password": "password"
+}
+
+// Update task status
+PUT http://localhost:8000/api/task_update/{taskId}/status
+{
+    "status": "completed"
+}
+
+// Get tasks assigned to a specific user using User ID
+GET http://localhost:8000/api/users/{userId}/tasks
+
+// Filter tasks by status
+GET http://localhost:8000/api/get_tasks/status/pending
+
+// Filter tasks by date
+GET http://localhost:8000/api/get_tasks/date/2024-03-01
+
+// Filter tasks by username
+GET http://localhost:8000/api/get_tasks/user/johndoe
+
+// Get tasks assigned to the currently logged-in user
+GET http://localhost:8000/api/tasksu/tasksofuser
